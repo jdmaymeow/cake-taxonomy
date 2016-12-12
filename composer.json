@@ -1,0 +1,24 @@
+{
+    "name": "jdmaymeow/cake-taxonomy",
+    "description": "CakeTaxonomy plugin for CakePHP",
+    "type": "cakephp-plugin",
+    "require": {
+        "php": ">=5.5.9",
+        "cakephp/cakephp": ">=3.3.2 <4.0.0",
+        "jdmaymeow/cake-utility": ">=1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "CakeTaxonomy\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CakeTaxonomy\\Test\\": "tests",
+            "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
+        }
+    }
+}
