@@ -1,45 +1,87 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Tag'), ['action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="tags index large-9 medium-8 columns content">
-    <h3><?= __('Tags') ?></h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('name') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('slug') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($tags as $tag): ?>
-            <tr>
-                <td><?= $this->Number->format($tag->id) ?></td>
-                <td><?= h($tag->name) ?></td>
-                <td><?= h($tag->slug) ?></td>
-                <td><?= h($tag->created) ?></td>
-                <td><?= h($tag->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $tag->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $tag->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $tag->id], ['confirm' => __('Are you sure you want to delete # {0}?', $tag->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-        </ul>
-        <p><?= $this->Paginator->counter() ?></p>
+<?php $this->layout = 'CakeBootstrap.default'; ?>
+<?php $this->start('subtitle_for_page'); ?>
+Cms
+<?php $this->end() ?>
+
+<!-- Header -->
+<div class="cinema border-bottom-gray bg-amethyst-sl">
+    <div class="container">
+        <h3><?= __('Tags') ?>
+            <div class="pull-right">
+
+                <div class="btn-group">
+                    <?= $this->Html->link(__('New Tag'), ['action' => 'add'], ['class' => 'btn btn-sm btn-default']) ?>
+                    <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-chevron-down"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-left">
+                        <li><?= $this->Html->link(__('List Tags'), ['action' => 'index']) ?> </li>
+                        <li><?= $this->Html->link(__('New Tag'), ['action' => 'add']) ?> </li>
+                                            </ul>
+                </div>
+            </div>
+        </h3>
+
     </div>
 </div>
+
+<!-- Begin page content -->
+    <main id="main-container">
+
+         <!-- Content -->
+         <div class="container">
+             <div class="row">
+                 <div class="col-md-12">
+
+                     <div class="table-responsive">
+                    <table class="table table-hover table-vcenter">
+                        <thead>
+                        <tr>
+                                                        <td><?= $this->Paginator->sort('id') ?></td>
+                                                        <td><?= $this->Paginator->sort('name') ?></td>
+                                                        <td><?= $this->Paginator->sort('slug') ?></td>
+                                                        <td><?= $this->Paginator->sort('created') ?></td>
+                                                        <td><?= $this->Paginator->sort('modified') ?></td>
+                                                        <td class="actions text-center"><?= __('Actions') ?></td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($tags as $tag): ?>
+                        <tr>
+                                                        <td><?= $this->Number->format($tag->id) ?></td>
+                                                        <td><?= h($tag->name) ?></td>
+                                                        <td><?= h($tag->slug) ?></td>
+                                                        <td><?= h($tag->created) ?></td>
+                                                        <td><?= h($tag->modified) ?></td>
+                                                        <td class="actions text-center">
+                                <div class="btn-group">
+                                    <?= $this->Html->link(__('View'), ['action' => 'view', $tag->id], ['class' => 'btn btn-xs btn-default']) ?>
+                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $tag->id], ['class' => 'btn btn-xs btn-default']) ?>
+                                        <button class="btn btn-xs btn-danger" type="button" data-toggle="modal" data-target="#modal-delete-<?= $tag->id?>">Delete</button>
+
+                                </div>
+                                <?= $this->element('CakeBootstrap.deletemodal', ['id' => $tag->id, 'name' => $tag->id]); ?>
+                            </td>
+                        </tr>
+
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+
+                 </div>
+             </div>
+             <div class="row">
+                    <div class="col-md-12">
+                        <ul class="pagination">
+                            <?php //echo $this->Paginator->prev('< ' . __('previous')) ?>
+                            <?= $this->Paginator->numbers() ?>
+                            <?php //echo $this->Paginator->next(__('next') . ' >') ?>
+                        </ul>
+                    </div>
+                </div>
+         </div>
+         <!-- Content -->
+
+	</main>
+<!-- End page Content -->
