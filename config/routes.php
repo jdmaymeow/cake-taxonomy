@@ -8,5 +8,8 @@ Router::plugin(
     ['path' => '/cake-taxonomy'],
     function (RouteBuilder $routes) {
         $routes->fallbacks(DashedRoute::class);
+        $routes->prefix('admin', function ($routes) {
+            $routes->fallbacks(DashedRoute::class);
+        });
     }
 );
