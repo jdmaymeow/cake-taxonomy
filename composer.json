@@ -5,8 +5,8 @@
     "require": {
         "php": ">=5.5.9",
         "cakephp/cakephp": ">=3.3.2 <4.0.0",
-        "jdmaymeow/cake-utility": ">=1.0",
-        "jdmaymeow/cake-bootstrap": ">=1.0"
+        "jdmaymeow/cake-utility": ">=1.0 <2.0",
+        "jdmaymeow/cake-bootstrap": ">=1.0 <2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "*"
